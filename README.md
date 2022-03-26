@@ -23,33 +23,58 @@
 
 **Required Must-have Stories**
 
-* [fill in your required user stories here]
-* ...
+* Sign in/Sign up (Parse server)
+* Post images (File)
+  * Must be a user to post an image
+  * Timestamp when it was posted 
+  * Delete
+  * Description (to be decided)
+  * Edit
+* Put images in collections/themes (pointer) *Public*
+* Put tags for images *Public*
+* Favorites
+  * Need to be logged in
+  * specific/private (tbd) to the user
+
 
 **Optional Nice-to-have Stories**
 
-* [fill in your required user stories here]
-* ...
+* Post video/GIF (TBD) (File)
+* Better UI
+* Background themes/customize app color
+* Sounds when clicked etc.
+* App Icon
+* Private/public favorites
+* Reactions to posts (thumbs up, heart, etc.)
+* Profile fragment
+* Share post on another app like (whatsapp, instagram, snapchat, discord, etc.)
 
 ### 2. Screen Archetypes
 
-* [list first screen here] 
-   * [list associated required story here]
-   * ...
+* Splash screen
+* Login/Sign up screen with continue without logging in (only can see posts, cannot upload)
+* Main page
+  * Public collections, search bar, navigation panes etc
+  * Upload button if user signed in
+    * If user is not logged in, the upload button will take them to the login screen, and then after logging in, they can upload
+  * Fragments
+    * Collections/Favorites
+    * Main page
+* Post screen
 
 ### 3. Navigation
 
 **Tab Navigation** (Tab to Screen)
 
-* [fill out your first tab]
-* ...
+* When clicked on collections tab, takes you to collections screen
+* When clicked on main (middle) tab, takes you back to main page where posts are present
 
 Optional:
-* ...
 
 **Flow Navigation** (Screen to Screen)
-* [list first screen here]
-   * [list screen navigation here]
+
+* When user logs in or continues without logging in, takes them to main page
+* When user clicks on upload button on main page, takes them to post screen, else: takes them to login and then post screen
 
 ## Wireframes
 <img src="IMAGE" width=800><br>
