@@ -48,6 +48,7 @@
 * Reactions to posts (thumbs up, heart, etc.)
 * Profile fragment
 * Share post on another app like (whatsapp, instagram, snapchat, discord, etc.)
+* Share meme on another app (Sending simple data to other apps)
 
 ### 2. Screen Archetypes
 
