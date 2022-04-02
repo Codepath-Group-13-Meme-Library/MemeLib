@@ -10,7 +10,6 @@
 MemeLib is an entertainment app that allows people to easily store memes, put them in collections and favorites, share memes across the world with others, upload their own memes and explore memes on the internet or memes created by other users. Our goal is to enable people to share memes fast and easily on social media and make people laugh.
 
 ### App Evaluation
-[Evaluation of your app across the following attributes]
 - **Category:** Entertainment
 - **Mobile:** This app would be primarily developed for mobile.
 - **Story:** We will be using a meme library API to pull memes from the internet, or users can manually upload their own memes and share with others or keep it private. Any user can view memes on the MemeLib app, but to upload memes they must log in or sign up.
