@@ -42,7 +42,7 @@ MemeLib is an entertainment app that allows people to easily store memes, put th
 * Background themes/customize app color
 * Sounds effects
 * App Icon
-* Private/public favorites
+* Private/public collections
 * Reactions to posts (thumbs up, heart, etc.)
 * Profile fragment
 * Share meme on another app (like whatsapp, instagram, snapchat, discord, etc.)
@@ -68,8 +68,6 @@ MemeLib is an entertainment app that allows people to easily store memes, put th
 * When clicked on collections tab, takes you to collections screen
 * When clicked on feed tab, takes you back to feeds page where posts are present
 * When clicked on post tab, if user is logged in takes them to post screen, else: takes them to login and then post screen
-
-Optional:
 
 **Flow Navigation** (Screen to Screen)
 
