@@ -7,16 +7,16 @@
 
 ## Overview
 ### Description
-[Description goes here]
+MemeLib is an entertainment app that allows people to easily store memes, put them in collections and favorites, share memes across the world with others, upload their own memes and explore memes on the internet or memes created by other users. Our goal is to enable people to share memes fast and easily on social media and make people laugh.
 
 ### App Evaluation
 [Evaluation of your app across the following attributes]
-- **Category:** 
-- **Mobile:**
-- **Story:**
-- **Market:**
-- **Habit:** 
-- **Scope:** 
+- **Category:** Entertainment
+- **Mobile:** This app would be primarily developed for mobile.
+- **Story:** We will be using a meme library API to pull memes from the internet, or users can manually upload their own memes and share with others or keep it private. Any user can view memes on the MemeLib app, but to upload memes they must log in or sign up.
+- **Market:** Any individual could choose to use this app, and to keep it a safe environment, people would be organized into age groups.
+- **Habit:** This app could be used as often or unoften as the user wanted depending on whether they are looking for a meme to send their friends, co-workers, families, or can be used if they want to have a laugh.
+- **Scope:** People can use this app to store their favorite memes or put their memes in collections to easily find their memes and explore more memes. Large potential use for social media apps such as WhatsApp, Instagram, Facebook, Discord to find funny/reaction GIFs, pictures to share with others.
 
 ## Product Spec
 ### 1. User Stories (Required and Optional)
@@ -34,21 +34,19 @@
 * Put tags for images *Public*
 * Favorites
   * Need to be logged in
-  * specific/private (tbd) to the user
 
 
 **Optional Nice-to-have Stories**
 
-* Post video/GIF (TBD) (File)
+* Post video/GIF (File)
 * Better UI
 * Background themes/customize app color
-* Sounds when clicked etc.
+* Sounds effects
 * App Icon
 * Private/public favorites
 * Reactions to posts (thumbs up, heart, etc.)
 * Profile fragment
-* Share post on another app like (whatsapp, instagram, snapchat, discord, etc.)
-* Share meme on another app (Sending simple data to other apps)
+* Share meme on another app (like whatsapp, instagram, snapchat, discord, etc.)
 
 ### 2. Screen Archetypes
 
@@ -60,22 +58,25 @@
     * If user is not logged in, the upload button will take them to the login screen, and then after logging in, they can upload
   * Fragments
     * Collections/Favorites
-    * Main page
-* Post screen
+    * Feed page
+    * Post meme
+       * If user is not logged in, the upload button will take them to the login screen, and then after logging in, they can upload
 
 ### 3. Navigation
 
 **Tab Navigation** (Tab to Screen)
 
 * When clicked on collections tab, takes you to collections screen
-* When clicked on main (middle) tab, takes you back to main page where posts are present
+* When clicked on feed tab, takes you back to feeds page where posts are present
+* When clicked on post tab, if user is logged in takes them to post screen, else: takes them to login and then post screen
 
 Optional:
 
 **Flow Navigation** (Screen to Screen)
 
 * When user logs in or continues without logging in, takes them to main page
-* When user clicks on upload button on main page, takes them to post screen, else: takes them to login and then post screen
+* Share button (Optional) allows the user to share a meme on another app.
+* Logout button takes them to login page
 
 ## Wireframes
 <img src="IMAGE" width=800><br>
