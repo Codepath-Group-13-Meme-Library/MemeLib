@@ -76,10 +76,88 @@ MemeLib is an entertainment app that allows people to easily store memes, put th
 * Logout button takes them to login page
 
 ## Wireframes
-<img src="IMAGE" width=800><br>
+<img src="https://i.imgur.com/BmbCfbR.png" width=800><br>
 
-### [BONUS] Digital Wireframes & Mockups
-<img src="IMAGE" height=200>
 
-### [BONUS] Interactive Prototype
-<img src="GIF" width=200>
+## Schema 
+### Models
+#### Post
+
+   | Property      | Type     | Description |
+   | ------------- | -------- | ------------|
+   | objectId      | String   | unique id for the user post (default field) |
+   | author        | Pointer to User| image author |
+   | image         | File     | image that user posts |
+   | caption       | String   | image caption by author |
+   | likesCount    | Number   | number of likes for the post |
+   | createdAt     | DateTime | date when post is created (default field) |
+   
+#### User
+
+   | Property      | Type     | Description |
+   | ------------- | -------- | ------------|
+   | objectId      | String   | unique id for the user post (default field) |
+   | emailVerified | Boolean  | Used for email verification (Optional Story) |
+   | username      | String   | User’s name (default field) |
+   | password      | String   | Password to sign in the user (default field) |
+   | collections   | Array of pointers to collections   | User’s collections |
+   | email         | String   | Email used for password retrieval etc. (Optional Story) |
+   | createdAt     | DateTime | date when post is created (default field) |
+   | updatedAt     | DateTime | date when post is last updated (default field) |
+
+#### Collections
+
+   | Property      | Type     | Description |
+   | ------------- | -------- | ------------|
+   | objectId      | String   | unique id for the user post (default field) |
+   | collection    | Array of pointers to posts| Collection list containing posts |
+   | user          | Pointer to user  | Collection owner |
+   | name          | String   | Name of collection |
+   | description   | String   | Description for collection |
+   | ACL           | ACL      | Permissions for the collection |
+   | createdAt     | DateTime | date when post is created (default field) |
+   | updatedAt     | DateTime | date when post is last updated (default field) |
+   
+ ### Networking
+#### List of network requests by screen
+   - Home Feed Screen
+      - (Read/GET) Query all posts where user is author
+         ```kotlin
+         val query: ParseQuery<Post> = ParseQuery.getQuery(Post::class.java)
+         query.include(Post.KEY_USER)
+         //return posts in descending order based on posted time
+         query.addDescendingOrder("createdAt")
+         query.findInBackground { posts, e ->
+            if (e != null) {
+                Log.e(TAG, "Error fetching posts")
+            } else {
+                //TODO: Do something with posts
+            }
+         }
+         ```
+      - (Create/POST) Create a new like on a post (optional story)
+      - (Delete) Delete existing like (optional story)
+   - Create Post Screen
+      - (Create/POST) Create a new post object
+   - Profile Screen
+      - (Read/GET) Query logged in user object
+      - (Create/POST) Create new collection
+      - Collection Screen
+        - (Update/PUT) Update Collection
+        - (Read/GET) Posts in collection
+       ```kotlin
+       val query: ParseQuery<Post> = ParseQuery.getQuery(Post::class.java)
+       query.include(Post.KEY_USER)
+       //only return posts from current clicked collection
+       query.whereEqualTo(Post.KEY_COLLECTION, getCurrentCollection())
+       //return posts in descending order based on posted time
+       query.addDescendingOrder("createdAt")
+
+       query.findInBackground { posts, e ->
+          if (e != null) {
+              Log.e(TAG, "Error fetching posts")
+          } else {
+              //TODO: Do something with posts
+          }
+       }
+       ```
