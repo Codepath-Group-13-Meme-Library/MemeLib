@@ -80,10 +80,10 @@ MemeLib is an entertainment app that allows people to easily store memes, put th
 
 
 ### [BONUS] Digital Wireframes & Mockups
-<img src="https://imgur.com/3hVzBKq.jpg" width=800>
+<img src="https://imgur.com/3hVzBKq.jpg" width=900>
 
 ### [BONUS] Interactive Prototype
-<img src="https://imgur.com/vxdmEox.gif" width=200>
+<img src="https://imgur.com/vxdmEox.gif" width=250>
 
 
 
