@@ -32,7 +32,6 @@ MemeLib is an entertainment app that allows people to easily store memes, put th
 * Put images in collections/themes (pointer) *Public*
 * Put tags for images *Public*
 * Favorites
-  * Need to be logged in
 
 
 **Optional Nice-to-have Stories**
@@ -44,7 +43,6 @@ MemeLib is an entertainment app that allows people to easily store memes, put th
 * App Icon
 * Private/public collections
 * Reactions to posts (thumbs up, heart, etc.)
-* Profile fragment
 * Share meme on another app (like whatsapp, instagram, snapchat, discord, etc.)
 
 ### 2. Screen Archetypes
