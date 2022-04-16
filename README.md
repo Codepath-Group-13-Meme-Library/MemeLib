@@ -4,6 +4,8 @@
 1. [Overview](#Overview)
 1. [Product Spec](#Product-Spec)
 1. [Wireframes](#Wireframes)
+1. [Schema](#Schema)
+1. [Milestones](#Milestones)
 
 ## Overview
 ### Description
@@ -128,7 +130,9 @@ Click [here](https://kbz9pk.axshare.com) to play with the interactive prototype 
    | updatedAt     | DateTime | date when post is last updated (default field) |
    
  ### Networking
+ 
 #### List of network requests by screen
+
    - Home Feed Screen
       - (Read/GET) Query all posts where user is author
          ```kotlin
@@ -170,3 +174,93 @@ Click [here](https://kbz9pk.axshare.com) to play with the interactive prototype 
           }
        }
        ```
+       
+       ## Milestones
+       
+       ### Milestone 1
+       
+       #### User Stories
+       
+       The following **required** functionality is completed:
+       - [X] Set up parse server
+       - [X] Created Splash Page
+       - [ ] Sign in/Sign up (Parse server)
+
+
+       The following **optional** features are implemented:
+       - [ ] Post GIF (File)
+       - [ ] Must be a user to post an image
+       - [ ] Timestamp when the post was posted
+       - [ ] Delete post
+       - [ ] Edit post
+       - [ ] Better UI
+       - [ ] Background themes/customize app color
+       - [ ] Sounds when clicked etc.
+       - [X] App Icon
+       - [ ] Private/public collections
+       - [ ] Reactions to posts (thumbs up, heart, etc.)
+       - [ ] Share memes on another app like (whatsapp, instagram, snapchat, discord, etc.) 
+
+       #### Video Walkthrough
+       
+       <img src='url' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+       GIF created with [LiceCap](http://www.cockos.com/licecap/).
+       
+       ### Milestone 2
+       
+        #### User Stories
+       The following **required** functionality is completed:
+       - [ ] Feed Page
+       - [ ] Post images (File) 
+       - [ ] Must be a user to post an image
+       - [ ] Timestamp when post was posted
+       - [ ] Delete post
+       - [ ] Description for post
+       - [ ] Edit post
+
+       The following **optional** features are implemented:
+       - [ ] Post GIF (File)
+       - [ ] Must be a user to post an image
+       - [ ] Timestamp when the post was posted
+       - [ ] Better UI
+       - [ ] Background themes/customize app color
+       - [ ] Sounds when clicked etc.
+       - [X] App Icon
+       - [ ] Private/public collections
+       - [ ] Reactions to posts (thumbs up, heart, etc.)
+       - [ ] Share memes on another app like (whatsapp, instagram, snapchat, discord, etc.) 
+
+
+       #### Video Walkthrough
+       
+       <img src='url' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+       GIF created with [LiceCap](http://www.cockos.com/licecap/).
+       
+       ### Milestone 3
+       
+       #### User Stories
+       
+       The following **required** functionality is completed:
+       - [ ] Put images in collections/favorites (pointer)
+       - [ ] Put tags for images 
+
+       The following **optional** features are implemented:
+       - [ ] Post GIF (File)
+       - [ ] Must be a user to post an image
+       - [ ] Timestamp when the post was posted
+       - [ ] Delete post
+       - [ ] Edit post
+       - [ ] Better UI
+       - [ ] Background themes/customize app color
+       - [ ] Sounds when clicked etc.
+       - [X] App Icon
+       - [ ] Private/public collections
+       - [ ] Reactions to posts (thumbs up, heart, etc.)
+       - [ ] Share memes on another app like (whatsapp, instagram, snapchat, discord, etc.)
+
+
+       #### Video Walkthrough
+       
+       <img src='url' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+       GIF created with [LiceCap](http://www.cockos.com/licecap/).
+       
