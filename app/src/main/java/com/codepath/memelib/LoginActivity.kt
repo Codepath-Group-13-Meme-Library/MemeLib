@@ -3,7 +3,6 @@ package com.codepath.memelib
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -11,8 +10,6 @@ import androidx.appcompat.app.AppCompatActivity
 import com.parse.ParseObject
 import com.parse.ParseUser
 import org.json.JSONArray
-
-
 
 
 
@@ -38,24 +35,27 @@ class LoginActivity : AppCompatActivity() {
         }
 
         // Setting up onCLickListeners for Login and Signup buttons
-        findViewById<Button>(R.id.loginbtn).setOnClickListener {
-            val username = findViewById<EditText>(R.id.username).text.toString()
-            val password = findViewById<EditText>(R .id.password).text.toString()
+        findViewById<Button>(R.id.btnLogin).setOnClickListener {
+            val username = findViewById<EditText>(R.id.etUsername).text.toString()
+            val password = findViewById<EditText>(R .id.etPassword).text.toString()
             loginUser(username, password)
         }
 
-        findViewById<Button>(R.id.signupbtn).setOnClickListener {
-            val username = findViewById<EditText>(R.id.username).text.toString()
-            val password = findViewById<EditText>(R .id.password).text.toString()
+        findViewById<Button>(R.id.btnSignup).setOnClickListener {
+            val username = findViewById<EditText>(R.id.etUsername).text.toString()
+            val password = findViewById<EditText>(R .id.etPassword).text.toString()
             signUpUser(username, password)
+        }
+
+
+        // Setting up onCLickListeners for Skip and Explore buttons
+        findViewById<Button>(R.id.btnSkipLogin).setOnClickListener {
+            goToBrowseActivity()
+            Toast.makeText(this, "User skip login as a visitor", Toast.LENGTH_SHORT).show()
         }
     }
 
-    // handles the click event when the user prefers to skip login
-    fun onClick(view: View) {
-        goToMainActivity()
-        Toast.makeText(this, "User skipped login", Toast.LENGTH_SHORT).show()
-    }
+
 
     private fun signUpUser(username: String, password: String) {
         val user = ParseUser()  // Create the ParseUser
@@ -97,6 +97,13 @@ class LoginActivity : AppCompatActivity() {
         if (ParseUser.getCurrentUser() != null) {
             finish()                //closes the login activity, avoiding going back to login page on clicking back
         }
+    }
+
+
+    private fun goToBrowseActivity() {
+        val intent = Intent(this@LoginActivity, BrowseActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 
 
