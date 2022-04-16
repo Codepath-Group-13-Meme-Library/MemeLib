@@ -10,4 +10,22 @@
     <color name="colorPrimary">#18B11B</color>
     <color name="colorPrimaryDark">#292929</color>
     <color name="colorAccent">#FFEB3B</color>
+
+
+    <color name="blue_A">#87A4EA</color>
+    <color name="blue_B">#7891D1</color>
+
+    <color name="et_border">#BDBDBD</color>
+    <color name="transparent">#00FFFFFF</color>
+
+
+    <color name="yellow_400">#FFEE58</color>
+    <color name="yellow_500">#FFEB3B</color>
+    <color name="yellow_600">#FDD835</color>
+    <color name="yellow_700">#FBC02D</color>
+    <color name="yellow_800">#F9A825</color>
+
+    <color name="yellow_A">#F9CD45</color>
+    <color name="yellow_B">#F0C041</color>
+
 </resources>
