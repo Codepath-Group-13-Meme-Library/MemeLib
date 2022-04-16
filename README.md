@@ -184,7 +184,7 @@ Click [here](https://kbz9pk.axshare.com) to play with the interactive prototype 
        The following **required** functionality is completed:
        - [X] Set up parse server
        - [X] Created Splash Page
-       - [ ] Sign in/Sign up (Parse server)
+       - [X] Sign in/Sign up (Parse server)
 
 
        The following **optional** features are implemented:
@@ -203,7 +203,7 @@ Click [here](https://kbz9pk.axshare.com) to play with the interactive prototype 
 
        #### Video Walkthrough
        
-       <img src='url' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+       <img src='https://media3.giphy.com/media/bCCgDsjjEZVchwubjV/giphy.gif?cid=790b76116d81987dea7c8a93c1b033eea49d91c45aa5e428&rid=giphy.gif&ct=g' title='Video Walkthrough' width='' alt='Video Walkthrough' />
        
        GIF created with [LiceCap](http://www.cockos.com/licecap/).
        
