@@ -204,6 +204,7 @@ Click [here](https://kbz9pk.axshare.com) to play with the interactive prototype 
        #### Video Walkthrough
        
        <img src='url' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+       
        GIF created with [LiceCap](http://www.cockos.com/licecap/).
        
        ### Milestone 2
@@ -234,6 +235,7 @@ Click [here](https://kbz9pk.axshare.com) to play with the interactive prototype 
        #### Video Walkthrough
        
        <img src='url' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+       
        GIF created with [LiceCap](http://www.cockos.com/licecap/).
        
        ### Milestone 3
@@ -262,5 +264,6 @@ Click [here](https://kbz9pk.axshare.com) to play with the interactive prototype 
        #### Video Walkthrough
        
        <img src='url' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+       
        GIF created with [LiceCap](http://www.cockos.com/licecap/).
        
