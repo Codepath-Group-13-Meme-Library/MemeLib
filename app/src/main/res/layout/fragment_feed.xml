@@ -46,4 +46,16 @@
             tools:listitem="@layout/item_post" />
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    <Button
+        android:id="@+id/btnLogout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@drawable/et_roundcorners"
+        android:text="@string/logout"
+        android:textAllCaps="false"
+        android:layout_gravity="bottom"
+        android:textSize="15sp" />
+
 </FrameLayout>

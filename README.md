@@ -211,18 +211,17 @@ Click [here](https://kbz9pk.axshare.com) to play with the interactive prototype 
        
         #### User Stories
        The following **required** functionality is completed:
-       - [ ] Feed Page
-       - [ ] Post images (File) 
-       - [ ] Must be a user to post an image
-       - [ ] Timestamp when post was posted
-       - [ ] Delete post
-       - [ ] Description for post
-       - [ ] Edit post
+       - [x] Feed Page
+       - [x] Post images (File) 
+       - [x] Must be a user to post an image
+       - [x] Timestamp when post was posted
+       - [x] Delete post
+       - [x] Description for post
 
        The following **optional** features are implemented:
        - [ ] Post GIF (File)
-       - [ ] Must be a user to post an image
-       - [ ] Timestamp when the post was posted
+       - [ ] Edit post
+       - [x] Timestamp when the post was posted
        - [ ] Better UI
        - [ ] Background themes/customize app color
        - [ ] Sounds when clicked etc.
@@ -234,7 +233,7 @@ Click [here](https://kbz9pk.axshare.com) to play with the interactive prototype 
 
        #### Video Walkthrough
        
-       <img src='url' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+       <img src='https://i.imgur.com/xuS8ItC.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
        
        GIF created with [LiceCap](http://www.cockos.com/licecap/).
        
