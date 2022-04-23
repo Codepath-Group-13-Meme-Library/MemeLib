@@ -1,5 +1,6 @@
 package com.codepath.memelib
 
+import android.widget.ImageView
 import com.parse.ParseClassName
 import com.parse.ParseFile
 import com.parse.ParseObject
@@ -34,9 +35,14 @@ class Post : ParseObject() {
         put(KEY_USER, user)
     }
 
+    fun getID() : String? {
+        return getString(KEY_ID)
+    }
+
     companion object {
         const val KEY_DESCRIPTION = "caption"
         const val KEY_IMAGE = "image"
         const val KEY_USER = "author"
+        const val KEY_ID = "objectId"
     }
 }

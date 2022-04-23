@@ -1,14 +1,21 @@
 package com.codepath.memelib
 
 import android.content.Context
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.bumptech.glide.request.target.Target.SIZE_ORIGINAL
+import com.codepath.memelib.fragments.ModifyFragment
+import com.parse.ParseException
+import com.parse.ParseQuery
+import com.parse.ParseUser
+
 
 class PostAdapter(val context: Context, val posts: List<Post>) : RecyclerView.Adapter<PostAdapter.ViewHolder>() {
 
@@ -36,6 +43,8 @@ class PostAdapter(val context: Context, val posts: List<Post>) : RecyclerView.Ad
         val ivFavorite: ImageView
         val ivBookmark: ImageView
         val ivShareButton: ImageView
+        val ivEdit: ImageView
+        val ivDelete: ImageView
 
         init {
             tvUsername = itemView.findViewById(R.id.tvUsername)
@@ -45,12 +54,29 @@ class PostAdapter(val context: Context, val posts: List<Post>) : RecyclerView.Ad
             ivFavorite = itemView.findViewById(R.id.ivFavorite)
             ivBookmark = itemView.findViewById(R.id.ivBookmark)
             ivShareButton = itemView.findViewById(R.id.ivShare)
+            ivEdit = itemView.findViewById(R.id.ivEdit)
+            ivDelete = itemView.findViewById(R.id.ivDelete)
         }
 
         fun bind(post: Post) {
             tvDescription.text = post.getDescription()
             tvUsername.text = "@" + post.getUser()?.username
             tvTimeCreated.text = post.createdAt.toString()
+            if (!post.getUser()?.objectId.equals(ParseUser.getCurrentUser().objectId)) {
+//                Log.i("PostAdapter", post.getUser()?.get("objectId").toString())
+//                Log.i("PostAdapter", ParseUser.getCurrentUser().get("objectId").toString())
+                ivEdit.visibility = View.INVISIBLE
+                ivDelete.visibility = View.INVISIBLE
+            } else {
+                ivEdit.isClickable = true
+                ivEdit.setOnClickListener {
+
+                }
+                ivDelete.isClickable = true
+                ivDelete.setOnClickListener {
+                    deletePost(post)
+                }
+            }
 
             // Populate image
             Glide.with(itemView.context)
@@ -59,6 +85,33 @@ class PostAdapter(val context: Context, val posts: List<Post>) : RecyclerView.Ad
                 .into(ivImage)
 
         }
+
+        private fun deletePost(post: Post) {
+            val query: ParseQuery<Post> = ParseQuery.getQuery(Post::class.java)
+            query.getInBackground(
+                post.objectId
+            ) { post: Post, e: ParseException? ->
+                if (e == null) {
+                    // Deletes the fetched ParseObject from the database
+                    post.deleteInBackground { e2: ParseException? ->
+                        if (e2 == null) {
+                            Toast.makeText(itemView.context,
+                                "Delete Successful. Please refresh to see!",
+                                Toast.LENGTH_SHORT)
+                                .show()
+                        } else {
+                            //Something went wrong while deleting the Object
+                            Toast.makeText(itemView.context, "Error: " + e2.message, Toast.LENGTH_SHORT)
+                                .show()
+                        }
+                    }
+                } else {
+                    //Something went wrong while retrieving the Object
+                    Toast.makeText(itemView.context, "Error: " + e.message, Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+
     }
 
     //https://developer.android.com/training/sharing/send sharing on other apps

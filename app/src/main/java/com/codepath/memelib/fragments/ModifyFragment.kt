@@ -9,6 +9,7 @@ import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
 import android.util.Log
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,11 +18,11 @@ import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
 import com.codepath.memelib.MainActivity
 import com.codepath.memelib.Post
 import com.codepath.memelib.R
 import com.parse.ParseFile
+import com.parse.ParseQuery
 import com.parse.ParseUser
 import java.io.File
 import java.io.FileOutputStream
@@ -31,19 +32,46 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 
-class ComposeFragment: Fragment() {
+/**
+ * A simple [Fragment] subclass.
+ * Use the [ModifyFragment.newInstance] factory method to
+ * create an instance of this fragment.
+ */
+class ModifyFragment : Fragment() {
+
     val PICK_PHOTO_CODE = 1046;
 
     val photoFileName = "photo.jpg"
     var photoFile: File? = null
 
     lateinit var ivPreview: ImageView
+    lateinit var post: Post
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        val id: String? = savedInstanceState?.getString("id")
+        val query: ParseQuery<Post> = ParseQuery.getQuery(Post::class.java)
+        query.whereEqualTo(Post.KEY_ID, id)
+        query.include(Post.KEY_ID)
+
+        //return posts in descending order based on posted time
+        query.addDescendingOrder("createdAt")
+
+        query.findInBackground { posts, e ->
+            if (e != null) {
+                Log.e(FeedFragment.TAG, "Error fetching posts")
+            } else {
+                if (posts != null) {
+                    for (post in posts) {
+                        Log.i(FeedFragment.TAG, "Post: " + post.getDescription() + " , username: " + post.getUser()?.username)
+                    }
+                    post = posts[0]
+                }
+            }
+        }
         return inflater.inflate(R.layout.fragment_compose, container, false)
     }
 
@@ -76,7 +104,6 @@ class ComposeFragment: Fragment() {
     // Send a post to our Parse server
     private fun submitPost(description: String, user: ParseUser, file: File) {
         // Create the Post object
-        val post = Post()
         post.setDescription(description)
         post.setUser(user)
         post.setImage(ParseFile(file))

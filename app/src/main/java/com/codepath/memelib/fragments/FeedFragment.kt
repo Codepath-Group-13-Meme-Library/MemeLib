@@ -1,21 +1,29 @@
 package com.codepath.memelib.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import com.codepath.memelib.LoginActivity
 import com.codepath.memelib.Post
 import com.codepath.memelib.PostAdapter
 import com.codepath.memelib.R
+import com.parse.ParseException
 import com.parse.ParseQuery
+import com.parse.ParseUser
 
 open class FeedFragment : Fragment() {
+
+    lateinit var logoutbtn: Button
 
     lateinit var postRecyclerView: RecyclerView
     lateinit var adapter: PostAdapter
@@ -63,6 +71,21 @@ open class FeedFragment : Fragment() {
         postRecyclerView.layoutManager = LinearLayoutManager(requireContext())
 
         queryPosts()
+
+        logoutbtn = view.findViewById<Button>(R.id.btnLogout)
+        logoutbtn.isEnabled = ParseUser.getCurrentUser() != null
+
+        logoutbtn.setOnClickListener {
+            //Launch the camera for the user to take picture
+            ParseUser.logOut()
+            goToLoginActivity()
+        }
+    }
+
+    private fun goToLoginActivity() {
+        val intent = Intent(this.requireContext(), LoginActivity::class.java)
+        startActivity(intent)
+        //finish()             //closes the MainActivity, avoiding going back to main page on clicking back
     }
 
     // query for all posts in our server
@@ -94,7 +117,11 @@ open class FeedFragment : Fragment() {
             }
         }
     }
+
+
     companion object {
         const val TAG = "FeedFragment"
+
+
     }
 }

@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.Toast
 import com.codepath.memelib.LoginActivity
 import com.codepath.memelib.R
 import com.parse.ParseUser
@@ -25,6 +26,12 @@ class ProfileFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        var fragmentToShow: Fragment? = MyPostsFragment()
+        if (fragmentToShow != null) {
+            fragmentManager?.beginTransaction()?.replace(R.id.flContainer, fragmentToShow)?.commit()
+        }
+        Toast.makeText(requireContext(), "My Posts", Toast.LENGTH_SHORT).show()
 
         logoutbtn = view.findViewById<Button>(R.id.btnLogout)
         logoutbtn.isEnabled = ParseUser.getCurrentUser() != null

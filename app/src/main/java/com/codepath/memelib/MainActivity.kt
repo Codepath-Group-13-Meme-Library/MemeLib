@@ -51,4 +51,8 @@ class MainActivity : AppCompatActivity() {
         // Set default selection
         findViewById<BottomNavigationView>(R.id.bottom_navigation).selectedItemId = R.id.action_home
     }
+
+    companion object {
+        const val TAG = "MainActivity"
+    }
 }
