@@ -1,6 +1,7 @@
 package com.codepath.memelib
 
 import android.content.Intent
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
@@ -13,7 +14,9 @@ import org.json.JSONArray
 
 
 
-class LoginActivity : AppCompatActivity() {
+class LoginActivity(override var mp: MediaPlayer? = null) : AppCompatActivity(), SoundClick {
+//    private var mp: MediaPlayer? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
@@ -38,24 +41,39 @@ class LoginActivity : AppCompatActivity() {
         findViewById<Button>(R.id.btnLogin).setOnClickListener {
             val username = findViewById<EditText>(R.id.etUsername).text.toString()
             val password = findViewById<EditText>(R .id.etPassword).text.toString()
+            startSound()
             loginUser(username, password)
         }
 
         findViewById<Button>(R.id.btnSignup).setOnClickListener {
             val username = findViewById<EditText>(R.id.etUsername).text.toString()
             val password = findViewById<EditText>(R .id.etPassword).text.toString()
+            startSound()
             signUpUser(username, password)
         }
 
 
         // Setting up onCLickListeners for Skip and Explore buttons
         findViewById<Button>(R.id.btnSkipLogin).setOnClickListener {
+            startSound()
             goToBrowseActivity()
             Toast.makeText(this, "User skip login as a visitor", Toast.LENGTH_SHORT).show()
         }
     }
 
-
+    override fun startSound() {
+        super.startSound()
+        if (mp == null) {
+            mp = MediaPlayer.create(this, R.raw.sample)
+        }
+        mp?.start()
+    }
+//    private fun startSound() {
+//        if (mp == null) {
+//            mp = MediaPlayer.create(this, R.raw.sample)
+//        }
+//        mp?.start()
+//    }
 
     private fun signUpUser(username: String, password: String) {
         val user = ParseUser()  // Create the ParseUser
