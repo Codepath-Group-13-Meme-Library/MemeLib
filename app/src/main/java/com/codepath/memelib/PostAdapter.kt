@@ -1,6 +1,7 @@
 package com.codepath.memelib
 
 import android.content.Context
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -15,9 +16,11 @@ import com.codepath.memelib.fragments.ModifyFragment
 import com.parse.ParseException
 import com.parse.ParseQuery
 import com.parse.ParseUser
+import kotlin.coroutines.coroutineContext
 
 
-class PostAdapter(val context: Context, val posts: List<Post>) : RecyclerView.Adapter<PostAdapter.ViewHolder>() {
+class PostAdapter(val context: Context, val posts: List<Post>)
+    : RecyclerView.Adapter<PostAdapter.ViewHolder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostAdapter.ViewHolder {
         // specify layout file to use for this item
@@ -58,6 +61,8 @@ class PostAdapter(val context: Context, val posts: List<Post>) : RecyclerView.Ad
             ivDelete = itemView.findViewById(R.id.ivDelete)
         }
 
+
+
         fun bind(post: Post) {
             tvDescription.text = post.getDescription()
             tvUsername.text = "@" + post.getUser()?.username
@@ -74,6 +79,7 @@ class PostAdapter(val context: Context, val posts: List<Post>) : RecyclerView.Ad
                 }
                 ivDelete.isClickable = true
                 ivDelete.setOnClickListener {
+
                     deletePost(post)
                 }
             }

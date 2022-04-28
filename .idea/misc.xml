@@ -3,8 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/CodePath Android/MemeLib/app/src/main/res/layout/activity_browse.xml" value="0.1" />
         <entry key="..\:/CodePath Android/MemeLib/app/src/main/res/layout/activity_login.xml" value="0.23369565217391305" />
         <entry key="..\:/CodePath Android/MemeLib/app/src/main/res/layout/activity_main.xml" value="0.10989583333333333" />
+        <entry key="..\:/CodePath Android/MemeLib/app/src/main/res/layout/item_post.xml" value="0.23822463768115942" />
         <entry key="..\:/MOOC/CodePath/Project/MemeLib/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1385" />
         <entry key="..\:/MOOC/CodePath/Project/MemeLib/app/src/main/res/drawable/btn_blue_bg.xml" value="0.1385" />
         <entry key="..\:/MOOC/CodePath/Project/MemeLib/app/src/main/res/drawable/btn_roundcourners.xml" value="0.1385" />

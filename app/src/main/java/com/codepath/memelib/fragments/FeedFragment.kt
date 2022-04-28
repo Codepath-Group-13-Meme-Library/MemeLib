@@ -1,6 +1,7 @@
 package com.codepath.memelib.fragments
 
 import android.content.Intent
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -13,18 +14,14 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-import com.codepath.memelib.LoginActivity
-import com.codepath.memelib.Post
-import com.codepath.memelib.PostAdapter
-import com.codepath.memelib.R
+import com.codepath.memelib.*
 import com.parse.ParseException
 import com.parse.ParseQuery
 import com.parse.ParseUser
 
-open class FeedFragment : Fragment() {
+open class FeedFragment(override var mp: MediaPlayer? = null) : Fragment(), SoundClick{
 
     lateinit var logoutbtn: Button
-
     lateinit var postRecyclerView: RecyclerView
     lateinit var adapter: PostAdapter
     lateinit var swipeContainer: SwipeRefreshLayout
@@ -33,6 +30,14 @@ open class FeedFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_feed, container, false)
+    }
+
+    override fun startSound() {
+        super.startSound()
+        if (mp == null) {
+            mp = MediaPlayer.create(requireContext(), R.raw.sample)
+        }
+        mp?.start()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -77,6 +82,7 @@ open class FeedFragment : Fragment() {
 
         logoutbtn.setOnClickListener {
             //Launch the camera for the user to take picture
+            startSound()
             ParseUser.logOut()
             goToLoginActivity()
         }

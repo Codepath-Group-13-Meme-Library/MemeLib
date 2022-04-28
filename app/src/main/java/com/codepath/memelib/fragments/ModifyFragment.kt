@@ -3,6 +3,7 @@ package com.codepath.memelib.fragments
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.ImageDecoder
+import android.media.MediaPlayer
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -21,6 +22,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.codepath.memelib.MainActivity
 import com.codepath.memelib.Post
 import com.codepath.memelib.R
+import com.codepath.memelib.SoundClick
 import com.parse.ParseFile
 import com.parse.ParseQuery
 import com.parse.ParseUser
@@ -37,7 +39,7 @@ import java.util.*
  * Use the [ModifyFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class ModifyFragment : Fragment() {
+class ModifyFragment(override var mp: MediaPlayer? = null) : Fragment(),SoundClick{
 
     val PICK_PHOTO_CODE = 1046;
 
@@ -75,6 +77,14 @@ class ModifyFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_compose, container, false)
     }
 
+    override fun startSound() {
+        super.startSound()
+        if (mp == null) {
+            mp = MediaPlayer.create(requireContext(), R.raw.sample)
+        }
+        mp?.start()
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -83,6 +93,7 @@ class ModifyFragment : Fragment() {
         view.findViewById<Button>(R.id.btnSubmit).setOnClickListener {
             // send post to server without an image
             // Get the description that they have inputted
+            startSound()
             val description = view.findViewById<EditText>(R.id.description).text.toString()
             val user = ParseUser.getCurrentUser()
             if (photoFile != null) {
@@ -97,6 +108,7 @@ class ModifyFragment : Fragment() {
 
         view.findViewById<Button>(R.id.btnPicture).setOnClickListener{
             // Launch camera to let user choose picture
+            startSound()
             onPickPhoto()
         }
     }

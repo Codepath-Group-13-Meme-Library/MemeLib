@@ -3,6 +3,7 @@ package com.codepath.memelib.fragments
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.ImageDecoder
+import android.media.MediaPlayer
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -21,6 +22,7 @@ import androidx.fragment.app.Fragment
 import com.codepath.memelib.MainActivity
 import com.codepath.memelib.Post
 import com.codepath.memelib.R
+import com.codepath.memelib.SoundClick
 import com.parse.ParseFile
 import com.parse.ParseUser
 import java.io.File
@@ -31,7 +33,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 
-class ComposeFragment: Fragment() {
+class ComposeFragment(override var mp: MediaPlayer? = null) : Fragment(), SoundClick{
     val PICK_PHOTO_CODE = 1046;
 
     val photoFileName = "photo.jpg"
@@ -47,6 +49,14 @@ class ComposeFragment: Fragment() {
         return inflater.inflate(R.layout.fragment_compose, container, false)
     }
 
+    override fun startSound() {
+        super.startSound()
+        if (mp == null) {
+            mp = MediaPlayer.create(requireContext(), R.raw.sample)
+        }
+        mp?.start()
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -55,6 +65,7 @@ class ComposeFragment: Fragment() {
         view.findViewById<Button>(R.id.btnSubmit).setOnClickListener {
             // send post to server without an image
             // Get the description that they have inputted
+            startSound()
             val description = view.findViewById<EditText>(R.id.description).text.toString()
             val user = ParseUser.getCurrentUser()
             if (photoFile != null) {
@@ -69,6 +80,7 @@ class ComposeFragment: Fragment() {
 
         view.findViewById<Button>(R.id.btnPicture).setOnClickListener{
             // Launch camera to let user choose picture
+            startSound()
             onPickPhoto()
         }
     }
