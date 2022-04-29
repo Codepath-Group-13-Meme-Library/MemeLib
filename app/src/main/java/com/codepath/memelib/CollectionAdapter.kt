@@ -8,18 +8,13 @@ import android.widget.EditText
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 
-class CollectionAdapter(val context: Context, val collections: List<Collections>)
+class CollectionAdapter(val context: Context, private val collections: List<Collections>)
     : RecyclerView.Adapter<CollectionAdapter.ViewHolder>() {
 
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val etCollectionName : EditText
-        val deleteButton : ImageView
-
-        init {
-            etCollectionName = itemView.findViewById(R.id.etCollectionName)
-            deleteButton = itemView.findViewById(R.id.deleteButton)
-        }
+        private val etCollectionName : EditText = itemView.findViewById(R.id.etCollectionName)
+        private val deleteButton : ImageView = itemView.findViewById(R.id.deleteButton)
 
         fun bind(collection: Collections){
             etCollectionName.setText("collectionName")
@@ -33,9 +28,9 @@ class CollectionAdapter(val context: Context, val collections: List<Collections>
             openDialog()
         }
 
-        fun openDialog() {
-            val removeCollectionDialog = RemoveCollectionDialog()
-            removeCollectionDialog.show(getSupportFragmentManager(), "deleteContactDialog")
+        private fun openDialog() {
+//            val removeCollectionDialog = RemoveCollectionDialog()
+//            removeCollectionDialog.show(getSupportFragmentManager(), "deleteContactDialog")
         }
     }
 

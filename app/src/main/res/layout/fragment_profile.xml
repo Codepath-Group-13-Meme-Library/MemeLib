@@ -17,11 +17,17 @@
         android:layout_gravity="bottom"
         android:textSize="15sp" />
 
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="top">
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvCollections"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:listitem="@layout/item_collection"/>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:src="@drawable/ic_baseline_bookmark_add"

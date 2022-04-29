@@ -23,7 +23,7 @@ class AddToCollectionDialog : AppCompatDialogFragment()  {
     override fun onAttach(context: Context) {
         super.onAttach(context)
         try {
-            listener = (AddToCollectionDialogListener) context
+            //listener = (AddToCollectionDialogListener) context
         } catch (e: ClassCastException) {
             throw ClassCastException(
                 context.toString() +

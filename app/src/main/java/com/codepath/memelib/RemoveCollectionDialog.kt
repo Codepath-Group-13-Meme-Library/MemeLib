@@ -27,7 +27,7 @@ class RemoveCollectionDialog : AppCompatDialogFragment() {
     override fun onAttach(context: Context) {
         super.onAttach(context)
         try {
-            listener = (RemoveCollectionDialogListener) context
+            //listener = (RemoveCollectionDialogListener) context
         } catch (e: ClassCastException) {
             throw ClassCastException(
                 context.toString() +

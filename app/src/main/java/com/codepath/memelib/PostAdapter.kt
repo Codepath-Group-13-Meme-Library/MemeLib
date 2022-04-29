@@ -112,8 +112,8 @@ class PostAdapter(val context: Context, val posts: List<Post>)
         }
 
         private fun openDialog() {
-            val addToCollectionDialog = AddToCollectionDialog()
-            addToCollectionDialog.show(getSupportFragmentManager(), "addToCollectionDialog")
+//            val addToCollectionDialog = AddToCollectionDialog()
+//            addToCollectionDialog.show(getSupportFragmentManager(), "addToCollectionDialog")
         }
 
         private fun deletePost(post: Post) {
