@@ -60,7 +60,7 @@ open class ProfileFragment(override var mp: MediaPlayer? = null) : Fragment(), S
             android.R.color.holo_orange_light,
             android.R.color.holo_red_light);
 
-        collectionsRecyclerView = view.findViewById(R.id.postRecyclerView)
+        collectionsRecyclerView = view.findViewById(R.id.rvCollections)
 
         val dividerItemDecoration = DividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL)
         collectionsRecyclerView.addItemDecoration(dividerItemDecoration)
