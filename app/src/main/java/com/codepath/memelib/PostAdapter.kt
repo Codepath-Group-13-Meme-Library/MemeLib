@@ -1,22 +1,21 @@
 package com.codepath.memelib
 
 import android.content.Context
-import android.media.MediaPlayer
-import android.os.Bundle
+import android.net.Uri
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
-import androidx.fragment.app.Fragment
+import androidx.core.content.ContextCompat
+import androidx.core.graphics.drawable.DrawableCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.codepath.memelib.fragments.ModifyFragment
 import com.parse.ParseException
 import com.parse.ParseQuery
 import com.parse.ParseUser
-import kotlin.coroutines.coroutineContext
 
 
 class PostAdapter(val context: Context, val posts: List<Post>)
@@ -61,8 +60,6 @@ class PostAdapter(val context: Context, val posts: List<Post>)
             ivDelete = itemView.findViewById(R.id.ivDelete)
         }
 
-
-
         fun bind(post: Post) {
             tvDescription.text = post.getDescription()
             tvUsername.text = "@" + post.getUser()?.username
@@ -90,6 +87,33 @@ class PostAdapter(val context: Context, val posts: List<Post>)
                 .fitCenter() // scale to fit entire image within ImageView
                 .into(ivImage)
 
+            ivFavorite.setOnClickListener { view: View? ->
+
+                DrawableCompat.setTint(ivFavorite.drawable, ContextCompat.getColor(itemView.context, R.color.red))
+            }
+
+            ivBookmark.setOnClickListener { view: View? ->
+                openDialog()
+            }
+
+            ivShareButton.setOnClickListener { view: View? ->
+                //todo share on other apps
+                sharePost()
+            }
+
+            ivEdit.setOnClickListener { view: View? ->
+                // todo modify post
+            }
+
+            ivDelete.setOnClickListener { view: View? ->
+                //todo delete posts
+            }
+
+        }
+
+        private fun openDialog() {
+//            val addToCollectionDialog = AddToCollectionDialog()
+//            addToCollectionDialog.show(getSupportFragmentManager(), "addToCollectionDialog")
         }
 
         private fun deletePost(post: Post) {
@@ -117,16 +141,15 @@ class PostAdapter(val context: Context, val posts: List<Post>)
                 }
             }
         }
-
-    }
-
-    //https://developer.android.com/training/sharing/send sharing on other apps
-//    fun sharePost(uriToImage: URI) {
+        //https://developer.android.com/training/sharing/send sharing on other apps
+        private fun sharePost() {
+            //todo
 //        val shareIntent: Intent = Intent().apply {
 //            action = Intent.ACTION_SEND
 //            putExtra(Intent.EXTRA_STREAM, uriToImage)
 //            type = "image/jpeg"
 //        }
 //        startActivity(Intent.createChooser(shareIntent, null))
-//    }
+        }
+    }
 }

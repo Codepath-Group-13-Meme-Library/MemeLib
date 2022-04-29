@@ -3,20 +3,27 @@ package com.codepath.memelib.fragments
 import android.content.Intent
 import android.media.MediaPlayer
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.Toast
-import com.codepath.memelib.LoginActivity
-import com.codepath.memelib.R
-import com.codepath.memelib.SoundClick
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import com.codepath.memelib.*
+import com.parse.ParseQuery
 import com.parse.ParseUser
 
-class ProfileFragment(override var mp: MediaPlayer? = null) : Fragment(), SoundClick{
+open class ProfileFragment(override var mp: MediaPlayer? = null) : Fragment(), SoundClick{
 
     lateinit var logoutbtn: Button
+    var allCollections: MutableList<Collections> = mutableListOf()
+    lateinit var adapter: CollectionAdapter
+    lateinit var swipeContainer: SwipeRefreshLayout
+    lateinit var collectionsRecyclerView: RecyclerView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,11 +44,40 @@ class ProfileFragment(override var mp: MediaPlayer? = null) : Fragment(), SoundC
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        var fragmentToShow: Fragment? = MyPostsFragment()
-        if (fragmentToShow != null) {
-            fragmentManager?.beginTransaction()?.replace(R.id.flContainer, fragmentToShow)?.commit()
+        swipeContainer = view.findViewById(R.id.swipeContainer)
+
+        swipeContainer.setOnRefreshListener {
+            // Your code to refresh the list here.
+            // Make sure you call swipeContainer.setRefreshing(false)
+            // once the network request has completed successfully.
+            queryCollections()
+            swipeContainer.isRefreshing = false
         }
-        Toast.makeText(requireContext(), "My Posts", Toast.LENGTH_SHORT).show()
+
+        // Configure the refreshing colors
+        swipeContainer.setColorSchemeResources(android.R.color.holo_blue_bright,
+            android.R.color.holo_green_light,
+            android.R.color.holo_orange_light,
+            android.R.color.holo_red_light);
+
+        collectionsRecyclerView = view.findViewById(R.id.postRecyclerView)
+
+        val dividerItemDecoration = DividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL)
+        collectionsRecyclerView.addItemDecoration(dividerItemDecoration)
+
+        adapter = CollectionAdapter(requireContext(), allCollections)
+        collectionsRecyclerView.adapter = adapter
+        // set layout manager on recyclerview
+        collectionsRecyclerView.layoutManager = LinearLayoutManager(requireContext())
+
+        queryCollections()
+
+//        var fragmentToShow: Fragment? = MyPostsFragment()
+//
+//        if (fragmentToShow != null) {
+//            fragmentManager?.beginTransaction()?.replace(R.id.flContainer, fragmentToShow)?.commit()
+//        }
+//        Toast.makeText(requireContext(), "My Posts", Toast.LENGTH_SHORT).show()
 
         logoutbtn = view.findViewById<Button>(R.id.btnLogout)
         logoutbtn.isEnabled = ParseUser.getCurrentUser() != null
@@ -53,6 +89,35 @@ class ProfileFragment(override var mp: MediaPlayer? = null) : Fragment(), SoundC
             goToLoginActivity()
         }
     }
+
+    open fun queryCollections() {
+        // SwipeRefresh: Clear posts first
+        allCollections.clear()
+
+        // SwipeRefresh: Populate again
+        //specify which class to query
+        // Specify which class to query
+        val query: ParseQuery<Collections> = ParseQuery.getQuery(Collections::class.java)
+        query.include(Collections.KEY_USER)
+
+        //return posts in descending order based on posted time
+        query.addDescendingOrder("createdAt")
+
+        query.findInBackground { collections, e ->
+            if (e != null) {
+                Log.e(FeedFragment.TAG, "Error fetching posts")
+            } else {
+                if (collections != null) {
+                    for (collection in collections) {
+                        Log.i(FeedFragment.TAG, "Collection: " + collection.getName() + " , username: " + collection.getUser()?.username)
+                    }
+                    allCollections.addAll(collections)
+                    adapter.notifyDataSetChanged()
+                }
+            }
+        }
+    }
+
 
     private fun goToLoginActivity() {
         val intent = Intent(this.requireContext(), LoginActivity::class.java)
