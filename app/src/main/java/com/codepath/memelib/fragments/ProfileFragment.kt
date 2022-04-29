@@ -54,6 +54,7 @@ class ProfileFragment(override var mp: MediaPlayer? = null) : Fragment(), SoundC
         }
     }
 
+
     private fun goToLoginActivity() {
         val intent = Intent(this.requireContext(), LoginActivity::class.java)
         startActivity(intent)

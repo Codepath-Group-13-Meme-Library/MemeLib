@@ -1,6 +1,7 @@
 package com.codepath.memelib
 
 import android.content.Context
+import android.net.Uri
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -87,14 +88,17 @@ class PostAdapter(val context: Context, val posts: List<Post>)
                 .into(ivImage)
 
             ivFavorite.setOnClickListener { view: View? ->
+
                 DrawableCompat.setTint(ivFavorite.drawable, ContextCompat.getColor(itemView.context, R.color.red))
             }
 
             ivBookmark.setOnClickListener { view: View? ->
+                openDialog()
             }
 
             ivShareButton.setOnClickListener { view: View? ->
                 //todo share on other apps
+                sharePost()
             }
 
             ivEdit.setOnClickListener { view: View? ->
@@ -105,6 +109,11 @@ class PostAdapter(val context: Context, val posts: List<Post>)
                 //todo delete posts
             }
 
+        }
+
+        private fun openDialog() {
+            val addToCollectionDialog = AddToCollectionDialog()
+            addToCollectionDialog.show(getSupportFragmentManager(), "addToCollectionDialog")
         }
 
         private fun deletePost(post: Post) {
@@ -132,16 +141,15 @@ class PostAdapter(val context: Context, val posts: List<Post>)
                 }
             }
         }
-
-    }
-
-    //https://developer.android.com/training/sharing/send sharing on other apps
-//    fun sharePost(uriToImage: URI) {
+        //https://developer.android.com/training/sharing/send sharing on other apps
+        private fun sharePost() {
+            //todo
 //        val shareIntent: Intent = Intent().apply {
 //            action = Intent.ACTION_SEND
 //            putExtra(Intent.EXTRA_STREAM, uriToImage)
 //            type = "image/jpeg"
 //        }
 //        startActivity(Intent.createChooser(shareIntent, null))
-//    }
+        }
+    }
 }

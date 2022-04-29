@@ -27,11 +27,15 @@
         <entry key="..\:/Users/dolun/AndroidStudioProjects/MemeLib/app/src/main/res/drawable/ic_baseline_bookmark_border_24.xml" value="0.222" />
         <entry key="..\:/Users/dolun/AndroidStudioProjects/MemeLib/app/src/main/res/drawable/ic_baseline_favorite.xml" value="0.222" />
         <entry key="..\:/Users/dolun/AndroidStudioProjects/MemeLib/app/src/main/res/drawable/ic_baseline_favorite_border_24.xml" value="0.222" />
+        <entry key="..\:/Users/dolun/AndroidStudioProjects/MemeLib/app/src/main/res/drawable/item_collection.xml" value="0.222" />
         <entry key="..\:/Users/dolun/AndroidStudioProjects/MemeLib/app/src/main/res/drawable/search_bar_background.xml" value="0.124" />
         <entry key="..\:/Users/dolun/AndroidStudioProjects/MemeLib/app/src/main/res/layout/activity_main.xml" value="0.1802536231884058" />
+        <entry key="..\:/Users/dolun/AndroidStudioProjects/MemeLib/app/src/main/res/layout/add_to_collection_dialog.xml" value="0.2210144927536232" />
+        <entry key="..\:/Users/dolun/AndroidStudioProjects/MemeLib/app/src/main/res/layout/delete_collection_dialog.xml" value="0.1" />
         <entry key="..\:/Users/dolun/AndroidStudioProjects/MemeLib/app/src/main/res/layout/fragment_compose.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/dolun/AndroidStudioProjects/MemeLib/app/src/main/res/layout/fragment_feed.xml" value="0.264" />
-        <entry key="..\:/Users/dolun/AndroidStudioProjects/MemeLib/app/src/main/res/layout/fragment_profile.xml" value="0.2210144927536232" />
+        <entry key="..\:/Users/dolun/AndroidStudioProjects/MemeLib/app/src/main/res/layout/fragment_profile.xml" value="0.264" />
+        <entry key="..\:/Users/dolun/AndroidStudioProjects/MemeLib/app/src/main/res/layout/item_collection.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/dolun/AndroidStudioProjects/MemeLib/app/src/main/res/layout/item_post.xml" value="0.4" />
         <entry key="..\:/Users/dolun/AndroidStudioProjects/MemeLib/app/src/main/res/menu/menu_bottom_navigation.xml" value="0.25416666666666665" />
         <entry key="app/src/main/res/layout/item_post.xml" value="0.24547101449275363" />
