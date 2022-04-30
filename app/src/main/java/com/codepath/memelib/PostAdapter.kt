@@ -1,9 +1,8 @@
 package com.codepath.memelib
 
 import android.content.Context
-import android.net.Uri
+import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,17 +12,19 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.DrawableCompat
+import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.codepath.memelib.dialogs.feedfragment.AddToCollectionDialog
 import com.codepath.memelib.fragments.ModifyFragment
-import com.codepath.memelib.fragments.MyPostsFragment
+import com.parse.Parse.getApplicationContext
 import com.parse.ParseException
 import com.parse.ParseQuery
 import com.parse.ParseUser
 
 
-class PostAdapter(val context: Context, val posts: List<Post>)
-    : RecyclerView.Adapter<PostAdapter.ViewHolder>(){
+class PostAdapter(var context: Context, val posts: List<Post>)
+    : RecyclerView.Adapter<PostAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostAdapter.ViewHolder {
         // specify layout file to use for this item
@@ -47,7 +48,6 @@ class PostAdapter(val context: Context, val posts: List<Post>)
         val tvTimeCreated: TextView
         // buttons for optional stories
         val ivFavorite: ImageView
-        val ivBookmark: ImageView
         val ivShareButton: ImageView
         val ivEdit: ImageView
         val ivDelete: ImageView
@@ -59,7 +59,6 @@ class PostAdapter(val context: Context, val posts: List<Post>)
             ivImage = itemView.findViewById(R.id.ivImage)
             tvTimeCreated = itemView.findViewById(R.id.tvTimeCreated)
             ivFavorite = itemView.findViewById(R.id.ivFavorite)
-            ivBookmark = itemView.findViewById(R.id.ivBookmark)
             ivShareButton = itemView.findViewById(R.id.ivShare)
             ivEdit = itemView.findViewById(R.id.ivEdit)
             ivDelete = itemView.findViewById(R.id.ivDelete)
@@ -93,6 +92,7 @@ class PostAdapter(val context: Context, val posts: List<Post>)
                 .fitCenter() // scale to fit entire image within ImageView
                 .into(ivImage)
 
+            //adding to collection attempt
             ivFavorite.setOnClickListener { view: View? ->
 
                 if (ParseUser.getCurrentUser().getJSONArray("collections")?.getJSONObject(1)?.has(post.getID()) == true) {
@@ -106,23 +106,20 @@ class PostAdapter(val context: Context, val posts: List<Post>)
                 }
             }
 
-            ivBookmark.setOnClickListener { view: View? ->
-                openDialog()
+            ivAddToCollection.setOnClickListener { view: View? ->
+                //TODO
+                val addToCollectionDialog = AddToCollectionDialog()
+                val fragmentManager = (view?.getContext() as FragmentActivity).supportFragmentManager
+                addToCollectionDialog.show(fragmentManager, "addToCollectionDialog")
             }
 
             ivShareButton.setOnClickListener { view: View? ->
-                //todo share on other apps
-                sharePost()
+                //todo share on other apps optional
+                val intent = Intent(getApplicationContext(), view_post::class.java)
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.putExtra("POST", post)
+                getApplicationContext().startActivity(intent)
             }
-
-            ivAddToCollection.setOnClickListener { view: View? ->
-                //TODO
-            }
-        }
-
-        private fun openDialog() {
-//            val addToCollectionDialog = AddToCollectionDialog()
-//            addToCollectionDialog.show(getSupportFragmentManager(), "addToCollectionDialog")
         }
 
         private fun editPost(post: Post) {
@@ -159,16 +156,6 @@ class PostAdapter(val context: Context, val posts: List<Post>)
                     Toast.makeText(itemView.context, "Error: " + e.message, Toast.LENGTH_SHORT).show()
                 }
             }
-        }
-        //https://developer.android.com/training/sharing/send sharing on other apps
-        private fun sharePost() {
-            //todo
-//        val shareIntent: Intent = Intent().apply {
-//            action = Intent.ACTION_SEND
-//            putExtra(Intent.EXTRA_STREAM, uriToImage)
-//            type = "image/jpeg"
-//        }
-//        startActivity(Intent.createChooser(shareIntent, null))
         }
     }
 }

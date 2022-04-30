@@ -17,7 +17,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MemeLib"
         android:usesCleartextTraffic="true">
-            android:name=".BrowseActivity"
+        <activity
+            android:name=".view_post"
             android:exported="false" />
 
         <meta-data
@@ -42,7 +43,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity android:name=".BrowseActivity" />
     </application>
 

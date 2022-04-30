@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="match_parent"
+    tools:context=".view_post">
 
     <TextView
         android:id="@+id/tvUsername"
@@ -26,13 +27,15 @@
         android:layout_width="358dp"
         android:layout_height="303dp"
         android:layout_marginStart="140dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="140dp"
         android:scaleType="fitXY"
-        app:layout_constraintBottom_toTopOf="@+id/tvTimeCreated"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.514"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvDescription"
+        app:layout_constraintVertical_bias="0.015"
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
@@ -54,31 +57,31 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="12dp"
         android:layout_marginEnd="337dp"
-        android:layout_marginBottom="24dp"
         android:text="time"
         android:textSize="10sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.263"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivImage" />
 
     <TextView
         android:id="@+id/tvTags"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="337dp"
-        android:layout_marginBottom="1dp"
+        android:layout_marginBottom="268dp"
         android:text="#tag"
         android:textSize="10sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.27"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvTimeCreated"
-        app:layout_constraintVertical_bias="0.6" />
+        app:layout_constraintVertical_bias="0.117" />
 
     <ImageView
         android:id="@+id/ivShare"
@@ -88,6 +91,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ivImage"
+        app:layout_constraintVertical_bias="0.006"
         app:srcCompat="@android:drawable/ic_menu_share" />
 
     <ImageView
@@ -108,6 +112,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/ivAddToCollection"
         app:layout_constraintTop_toBottomOf="@+id/ivImage"
+        app:layout_constraintVertical_bias="0.006"
         app:srcCompat="@drawable/ic_baseline_edit_24" />
 
     <ImageView
@@ -118,6 +123,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/ivEdit"
         app:layout_constraintTop_toBottomOf="@+id/ivImage"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/ic_baseline_delete_24" />
 
     <ImageView
@@ -128,5 +134,17 @@
         app:srcCompat="@drawable/ic_baseline_playlist_add_24"
         app:layout_constraintEnd_toStartOf="@+id/ivFavorite"
         app:layout_constraintTop_toBottomOf="@+id/ivImage" />
+
+    <ImageButton
+        android:id="@+id/returnBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="30dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/ic_baseline_arrow_back_24" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
