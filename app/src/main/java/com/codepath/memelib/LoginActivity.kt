@@ -80,6 +80,13 @@ class LoginActivity(override var mp: MediaPlayer? = null) : AppCompatActivity(),
         user.setUsername(username) // Set fields for the user to be created
         user.setPassword(password)
         val colArray = JSONArray()  // Creating empty JsonArray for collections
+
+        //every user must have favorites collection
+
+        val favoritesCollection = Collections()
+        favoritesCollection.setName("favorites")
+        favoritesCollection.setUser(user)
+        colArray.put(favoritesCollection)
         user.put("collections", colArray)  // Set custom properties
 
         user.signUpInBackground { e ->

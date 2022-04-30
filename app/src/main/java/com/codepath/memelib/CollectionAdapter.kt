@@ -4,8 +4,8 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
 import android.widget.ImageView
+import android.widget.TextClock
 import androidx.recyclerview.widget.RecyclerView
 
 class CollectionAdapter(val context: Context, private val collections: List<Collections>)
@@ -13,11 +13,11 @@ class CollectionAdapter(val context: Context, private val collections: List<Coll
 
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val etCollectionName : EditText = itemView.findViewById(R.id.etCollectionName)
+        private val tvCollectionName : TextClock = itemView.findViewById(R.id.tvCollectionName)
         private val deleteButton : ImageView = itemView.findViewById(R.id.deleteButton)
 
         fun bind(collection: Collections){
-            etCollectionName.setText("collectionName")
+            tvCollectionName.setText(collection.getName())
 
             deleteButton.setOnClickListener {
                 deleteCollection(collection)

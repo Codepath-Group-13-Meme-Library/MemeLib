@@ -12,6 +12,7 @@ class MemeLibApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         ParseObject.registerSubclass(Post::class.java)
+        ParseObject.registerSubclass(Collections::class.java)
         // Initialize Parse on application launch
         Parse.initialize(
             Parse.Configuration.Builder(this)
