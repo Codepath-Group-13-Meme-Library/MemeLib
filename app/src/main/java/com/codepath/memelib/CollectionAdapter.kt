@@ -7,11 +7,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextClock
 import android.widget.TextView
-import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
-import com.codepath.memelib.dialogs.feedfragment.AddToCollectionDialog
-import com.codepath.memelib.dialogs.feedfragment.EditCollectionDialog
-import com.codepath.memelib.dialogs.feedfragment.RemoveCollectionDialog
 
 class CollectionAdapter(val context: Context, private val collections: List<Collections>)
     : RecyclerView.Adapter<CollectionAdapter.ViewHolder>() {
@@ -20,7 +16,6 @@ class CollectionAdapter(val context: Context, private val collections: List<Coll
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val tvCollectionName : TextView = itemView.findViewById(R.id.tvCollectionName)
         private val deleteButton : ImageView = itemView.findViewById(R.id.deleteButton)
-        private val editButton : ImageView = itemView.findViewById(R.id.editButton)
 
         fun bind(collection: Collections){
             tvCollectionName.setText(collection.getName())
@@ -28,22 +23,15 @@ class CollectionAdapter(val context: Context, private val collections: List<Coll
             deleteButton.setOnClickListener {
                 deleteCollection(collection)
             }
-
-            editButton.setOnClickListener {
-                EditCollection(collection)
-            }
-        }
-
-        private fun EditCollection(collection: Collections) {
-            val EditCollectionDialog = EditCollectionDialog()
-            val fragmentManager = (itemView.getContext() as FragmentActivity).supportFragmentManager
-            EditCollectionDialog.show(fragmentManager, "EditCollectionDialog")
         }
 
         private fun deleteCollection(collection: Collections) {
-            val RemoveCollectionDialog = RemoveCollectionDialog()
-            val fragmentManager = (itemView.getContext() as FragmentActivity).supportFragmentManager
-            RemoveCollectionDialog.show(fragmentManager, "removeCollectionDialog")
+            openDialog()
+        }
+
+        private fun openDialog() {
+//            val removeCollectionDialog = RemoveCollectionDialog()
+//            removeCollectionDialog.show(getSupportFragmentManager(), "deleteContactDialog")
         }
     }
 
