@@ -101,7 +101,8 @@ class PostAdapter(val context: Context, val posts: List<Post>)
                 }
                 else {
                     DrawableCompat.setTint(ivFavorite.drawable, ContextCompat.getColor(itemView.context, R.color.red))
-                   // ParseUser.getCurrentUser().getJSONArray("collections")?.getJSONObject(1)?.
+                    ParseUser.getCurrentUser().getJSONArray("collections")?.getJSONObject(1)
+                        ?.put("post", post)
                 }
             }
 
