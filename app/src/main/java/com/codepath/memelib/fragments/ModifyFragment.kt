@@ -42,7 +42,6 @@ import java.util.*
 class ModifyFragment(override var mp: MediaPlayer? = null) : Fragment(),SoundClick{
 
     val PICK_PHOTO_CODE = 1046;
-
     val photoFileName = "photo.jpg"
     var photoFile: File? = null
 
@@ -56,24 +55,8 @@ class ModifyFragment(override var mp: MediaPlayer? = null) : Fragment(),SoundCli
     ): View? {
         val id: String? = savedInstanceState?.getString("id")
         val query: ParseQuery<Post> = ParseQuery.getQuery(Post::class.java)
-        query.whereEqualTo(Post.KEY_ID, id)
-        query.include(Post.KEY_ID)
-
-        //return posts in descending order based on posted time
-        query.addDescendingOrder("createdAt")
-
-        query.findInBackground { posts, e ->
-            if (e != null) {
-                Log.e(FeedFragment.TAG, "Error fetching posts")
-            } else {
-                if (posts != null) {
-                    for (post in posts) {
-                        Log.i(FeedFragment.TAG, "Post: " + post.getDescription() + " , username: " + post.getUser()?.username)
-                    }
-                    post = posts[0]
-                }
-            }
-        }
+        val bundle = arguments
+        post = bundle!!.getParcelable<Post>("post")!!
         return inflater.inflate(R.layout.fragment_compose, container, false)
     }
 
@@ -99,10 +82,8 @@ class ModifyFragment(override var mp: MediaPlayer? = null) : Fragment(),SoundCli
             if (photoFile != null) {
                 submitPost(description, user, photoFile!!)
             } else {
-                // print error log msg
-                Log.e(TAG, "Photo missing")
-                // show a toast to users to choose a pic
                 Toast.makeText(requireContext(), "Missing Photo", Toast.LENGTH_SHORT).show()
+                submitPost(description, user, null)
             }
         }
 
@@ -114,11 +95,13 @@ class ModifyFragment(override var mp: MediaPlayer? = null) : Fragment(),SoundCli
     }
 
     // Send a post to our Parse server
-    private fun submitPost(description: String, user: ParseUser, file: File) {
+    private fun submitPost(description: String, user: ParseUser, file: File?) {
         // Create the Post object
         post.setDescription(description)
         post.setUser(user)
-        post.setImage(ParseFile(file))
+        if (file != null) {
+            post.setImage(ParseFile(file))
+        }
         post.saveInBackground{ e ->
             if (e != null) {
                 // Something went wrong

@@ -2,6 +2,7 @@ package com.codepath.memelib
 
 import android.content.Context
 import android.net.Uri
+import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -9,10 +10,13 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.DrawableCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.codepath.memelib.fragments.ModifyFragment
+import com.codepath.memelib.fragments.MyPostsFragment
 import com.parse.ParseException
 import com.parse.ParseQuery
 import com.parse.ParseUser
@@ -47,6 +51,7 @@ class PostAdapter(val context: Context, val posts: List<Post>)
         val ivShareButton: ImageView
         val ivEdit: ImageView
         val ivDelete: ImageView
+        val ivAddToCollection: ImageView
 
         init {
             tvUsername = itemView.findViewById(R.id.tvUsername)
@@ -58,6 +63,7 @@ class PostAdapter(val context: Context, val posts: List<Post>)
             ivShareButton = itemView.findViewById(R.id.ivShare)
             ivEdit = itemView.findViewById(R.id.ivEdit)
             ivDelete = itemView.findViewById(R.id.ivDelete)
+            ivAddToCollection = itemView.findViewById(R.id.ivAddToCollection)
         }
 
         fun bind(post: Post) {
@@ -72,7 +78,7 @@ class PostAdapter(val context: Context, val posts: List<Post>)
             } else {
                 ivEdit.isClickable = true
                 ivEdit.setOnClickListener {
-
+                    editPost(post)
                 }
                 ivDelete.isClickable = true
                 ivDelete.setOnClickListener {
@@ -101,19 +107,24 @@ class PostAdapter(val context: Context, val posts: List<Post>)
                 sharePost()
             }
 
-            ivEdit.setOnClickListener { view: View? ->
-                // todo modify post
+            ivAddToCollection.setOnClickListener { view: View? ->
+                //TODO
             }
-
-            ivDelete.setOnClickListener { view: View? ->
-                //todo delete posts
-            }
-
         }
 
         private fun openDialog() {
 //            val addToCollectionDialog = AddToCollectionDialog()
 //            addToCollectionDialog.show(getSupportFragmentManager(), "addToCollectionDialog")
+        }
+
+        private fun editPost(post: Post) {
+            val activity = itemView.context as AppCompatActivity
+            val fragment = ModifyFragment()
+            val bundle = Bundle()
+            bundle.putParcelable("post", post)
+            fragment.arguments = bundle
+            val fm = activity.supportFragmentManager
+            fm.beginTransaction().replace(R.id.flContainer, fragment).addToBackStack(null).commit()
         }
 
         private fun deletePost(post: Post) {
