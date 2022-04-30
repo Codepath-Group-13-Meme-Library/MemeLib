@@ -12,6 +12,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentManager
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.codepath.memelib.fragments.CollectionFragment
+import com.codepath.memelib.fragments.FeedFragment
+import com.codepath.memelib.fragments.MyPostsFragment
+import com.parse.ParseQuery
 
 class CollectionAdapter(val context: Context, private val collections: List<Collections>)
     : RecyclerView.Adapter<CollectionAdapter.ViewHolder>() {
@@ -22,11 +26,35 @@ class CollectionAdapter(val context: Context, private val collections: List<Coll
         private val deleteButton : ImageView = itemView.findViewById(R.id.deleteButton)
         var allCollections: MutableList<Collections> = mutableListOf()
 
-        fun bind(collection: Collections){
-            tvCollectionName.setText(collection.getName())
+        fun bind(collection: Collections, position: Int) {
+            queryCollections()
+            if (position == 0) {
+                tvCollectionName.setText("My Posts")
+            } else {
+                try {
+                    tvCollectionName.setText(allCollections.get(position - 1).getName())
+                } catch (e: IndexOutOfBoundsException) {
+                    tvCollectionName.setText((position - 1).toString())
+                }
+            }
 
-            deleteButton.setOnClickListener {
-                deleteCollection(collection)
+            itemView.setOnClickListener {
+                if (position == 0) {
+                    val activity = itemView.context as AppCompatActivity
+                    val fragment = MyPostsFragment()
+                    val fm = activity.supportFragmentManager
+                    fm.beginTransaction().replace(R.id.flContainer, fragment).addToBackStack(null)
+                        .commit()
+                } else {
+                    val activity = itemView.context as AppCompatActivity
+                    val fragment = CollectionFragment()
+                    val fm = activity.supportFragmentManager
+                    val bundle = Bundle()
+                    val posts: ArrayList<Post> = allCollections.get(position - 1).getCollection()
+                    bundle.putParcelableArrayList("posts", posts)
+                    fm.beginTransaction().replace(R.id.flContainer, fragment).addToBackStack(null)
+                        .commit()
+                }
             }
         }
 
