@@ -1,6 +1,7 @@
 package com.codepath.memelib
 
 import android.content.Context
+import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +12,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
+import com.codepath.memelib.fragments.CollectionFragment
 import com.codepath.memelib.fragments.FeedFragment
 import com.codepath.memelib.fragments.MyPostsFragment
 import com.parse.ParseQuery
@@ -41,6 +43,14 @@ class CollectionAdapter(val context: Context, private val collections: List<Coll
                     val activity = itemView.context as AppCompatActivity
                     val fragment = MyPostsFragment()
                     val fm = activity.supportFragmentManager
+                    fm.beginTransaction().replace(R.id.flContainer, fragment).addToBackStack(null).commit()
+                } else {
+                    val activity = itemView.context as AppCompatActivity
+                    val fragment = CollectionFragment()
+                    val fm = activity.supportFragmentManager
+                    val bundle = Bundle()
+                    val posts : ArrayList<Post> = allCollections.get(position - 1).getCollection()
+                    bundle.putParcelableArrayList("posts", posts)
                     fm.beginTransaction().replace(R.id.flContainer, fragment).addToBackStack(null).commit()
                 }
             }
