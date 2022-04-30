@@ -28,5 +28,6 @@
     <color name="yellow_A">#F9CD45</color>
     <color name="yellow_B">#F0C041</color>
     <color name="red">#CA180B</color>
+    <color name="defaultcolor">#B0B0B0</color>
 
 </resources>

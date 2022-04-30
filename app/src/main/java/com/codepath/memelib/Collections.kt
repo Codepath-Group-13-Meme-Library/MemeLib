@@ -31,7 +31,7 @@ class Collections : ParseObject() {
     }
 
     fun setUser(user : ParseUser) {
-        put(Collections.KEY_USER, user)
+        put(KEY_USER, user)
     }
 
     fun getCollection() : ArrayList<Post> {

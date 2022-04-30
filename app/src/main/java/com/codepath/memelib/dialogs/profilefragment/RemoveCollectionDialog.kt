@@ -1,4 +1,4 @@
-package com.codepath.memelib
+package com.codepath.memelib.dialogs.profilefragment
 
 import android.app.AlertDialog
 import android.app.Dialog
@@ -7,23 +7,28 @@ import android.content.DialogInterface
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatDialogFragment
+import com.codepath.memelib.R
 
-class AddToCollectionDialog : AppCompatDialogFragment()  {
+class RemoveCollectionDialog : AppCompatDialogFragment() {
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val builder = AlertDialog.Builder(activity)
         val inflater = requireActivity().layoutInflater
-        val view: View = inflater.inflate(R.layout.add_to_collection_dialog, null)
-        //put list of choices
-//        builder.setView(view)
-//            .setAdapter()
+        val view: View = inflater.inflate(R.layout.remove_collection_dialog, null)
+        builder.setView(view)
+            .setNegativeButton(
+                "No"
+            ) { dialogInterface: DialogInterface?, i: Int -> }
+            .setPositiveButton(
+                "Yes"
+            ) { dialogInterface: DialogInterface?, i: Int -> listener.removeCollection() }
         return builder.create()
     }
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
         try {
-            //listener = (AddToCollectionDialogListener) context
+//            listener = (RemoveCollectionDialogListener) context
         } catch (e: ClassCastException) {
             throw ClassCastException(
                 context.toString() +
@@ -32,11 +37,12 @@ class AddToCollectionDialog : AppCompatDialogFragment()  {
         }
     }
 
-    interface AddToCollectionDialogListener {
-        fun addToCollection()
+    interface RemoveCollectionDialogListener {
+        fun removeCollection()
     }
 
     companion object {
-        lateinit var listener: AddToCollectionDialogListener
+        lateinit var listener: RemoveCollectionDialogListener
     }
+
 }

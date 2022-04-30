@@ -95,7 +95,15 @@ class PostAdapter(val context: Context, val posts: List<Post>)
 
             ivFavorite.setOnClickListener { view: View? ->
 
-                DrawableCompat.setTint(ivFavorite.drawable, ContextCompat.getColor(itemView.context, R.color.red))
+                if (ParseUser.getCurrentUser().getJSONArray("collections")?.getJSONObject(1)?.has(post.getID()) == true) {
+                    DrawableCompat.setTint(ivFavorite.drawable, ContextCompat.getColor(itemView.context, R.color.defaultcolor))
+                    ParseUser.getCurrentUser().getJSONArray("collections")?.getJSONObject(1)?.remove(post.getID())
+                }
+                else {
+                    DrawableCompat.setTint(ivFavorite.drawable, ContextCompat.getColor(itemView.context, R.color.red))
+                    ParseUser.getCurrentUser().getJSONArray("collections")?.getJSONObject(1)
+                        ?.put("post", post)
+                }
             }
 
             ivBookmark.setOnClickListener { view: View? ->

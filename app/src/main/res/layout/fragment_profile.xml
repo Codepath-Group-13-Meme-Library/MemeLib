@@ -38,6 +38,7 @@
         app:layout_anchor="@id/rvCollections"
         app:layout_anchorGravity="bottom|right|end"
         android:layout_gravity="bottom|end"
+        android:layout_margin="20dp"
         android:contentDescription="@string/addcollection" />
 
 </FrameLayout>

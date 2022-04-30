@@ -1,6 +1,5 @@
 package com.codepath.memelib
 
-import android.widget.ImageView
 import com.parse.ParseClassName
 import com.parse.ParseFile
 import com.parse.ParseObject

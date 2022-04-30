@@ -99,19 +99,23 @@ open class ProfileFragment(override var mp: MediaPlayer? = null) : Fragment(), S
         // Specify which class to query
         val query: ParseQuery<Collections> = ParseQuery.getQuery(Collections::class.java)
         query.include(Collections.KEY_USER)
-
+        //only return posts from current signed in user
+        query.whereEqualTo(Collections.KEY_USER, ParseUser.getCurrentUser())
         //return posts in descending order based on posted time
         query.addDescendingOrder("createdAt")
 
         query.findInBackground { collections, e ->
             if (e != null) {
-                Log.e(FeedFragment.TAG, "Error fetching posts")
+                Log.e(TAG, "Error fetching posts")
             } else {
                 if (collections != null) {
                     for (collection in collections) {
-                        Log.i(FeedFragment.TAG, "Collection: " + collection.getName() + " , username: " + collection.getUser()?.username)
+                            allCollections.add(collection)
+                        Log.i(
+                            TAG,
+                            "Post: " + collection.getName() + " , username: " + collection.getUser()?.username
+                        )
                     }
-                    allCollections.addAll(collections)
                     adapter.notifyDataSetChanged()
                 }
             }
@@ -123,5 +127,9 @@ open class ProfileFragment(override var mp: MediaPlayer? = null) : Fragment(), S
         val intent = Intent(this.requireContext(), LoginActivity::class.java)
         startActivity(intent)
         //finish()             //closes the MainActivity, avoiding going back to main page on clicking back
+    }
+
+    companion object {
+        const val TAG : String = "ProfileFragment"
     }
 }
