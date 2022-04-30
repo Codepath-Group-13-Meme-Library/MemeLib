@@ -1,10 +1,10 @@
 package com.codepath.memelib
 
-import com.parse.ParseClassName
-import com.parse.ParseFile
-import com.parse.ParseObject
-import com.parse.ParseUser
+import android.util.Log
+import com.codepath.memelib.fragments.FeedFragment
+import com.parse.*
 import org.json.JSONArray
+import org.json.JSONObject
 
 @ParseClassName("Collections")
 
@@ -34,8 +34,19 @@ class Collections : ParseObject() {
         put(Collections.KEY_USER, user)
     }
 
-    fun getCollection() : JSONArray? {
-        return getJSONArray(KEY_COLLECTION)
+    fun getCollection() : ArrayList<Post> {
+        var postsJson : JSONArray? = getJSONArray(KEY_COLLECTION)
+        var posts : ArrayList<Post> = ArrayList()
+        if (postsJson != null && postsJson.length() > 0) {
+            for (i in 0..postsJson.length()) {
+                val objectId = postsJson.getString(i)
+                val query: ParseQuery<Post> = ParseQuery.getQuery(Post::class.java)
+
+                query.getInBackground(objectId)
+                posts.add(query.first)
+            }
+        }
+        return posts
     }
 
     fun setCollection(collection : List<Post>) {
