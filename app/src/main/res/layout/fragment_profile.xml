@@ -31,6 +31,7 @@
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/AddCollectionBtn"
         android:src="@drawable/ic_baseline_bookmark_add"
         app:fabSize="normal"
         android:layout_width="wrap_content"
@@ -39,6 +40,7 @@
         app:layout_anchorGravity="bottom|right|end"
         android:layout_gravity="bottom|end"
         android:layout_margin="20dp"
-        android:contentDescription="@string/addcollection" />
+        android:contentDescription="@string/addcollection"
+        android:onClick="addNewCollectionListener"/>
 
 </FrameLayout>

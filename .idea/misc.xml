@@ -33,13 +33,18 @@
         <entry key="..\:/Users/dolun/AndroidStudioProjects/MemeLib/app/src/main/res/drawable/item_collection.xml" value="0.222" />
         <entry key="..\:/Users/dolun/AndroidStudioProjects/MemeLib/app/src/main/res/drawable/search_bar_background.xml" value="0.124" />
         <entry key="..\:/Users/dolun/AndroidStudioProjects/MemeLib/app/src/main/res/layout/activity_main.xml" value="0.1802536231884058" />
+        <entry key="..\:/Users/dolun/AndroidStudioProjects/MemeLib/app/src/main/res/layout/activity_view_post.xml" value="0.4" />
         <entry key="..\:/Users/dolun/AndroidStudioProjects/MemeLib/app/src/main/res/layout/add_to_collection_dialog.xml" value="0.2210144927536232" />
+        <entry key="..\:/Users/dolun/AndroidStudioProjects/MemeLib/app/src/main/res/layout/collection_list_item.xml" value="0.264" />
+        <entry key="..\:/Users/dolun/AndroidStudioProjects/MemeLib/app/src/main/res/layout/create_collection_dialog.xml" value="0.2210144927536232" />
         <entry key="..\:/Users/dolun/AndroidStudioProjects/MemeLib/app/src/main/res/layout/delete_collection_dialog.xml" value="0.1" />
+        <entry key="..\:/Users/dolun/AndroidStudioProjects/MemeLib/app/src/main/res/layout/edit_collection_dialog.xml" value="0.2210144927536232" />
         <entry key="..\:/Users/dolun/AndroidStudioProjects/MemeLib/app/src/main/res/layout/fragment_compose.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/dolun/AndroidStudioProjects/MemeLib/app/src/main/res/layout/fragment_feed.xml" value="0.264" />
         <entry key="..\:/Users/dolun/AndroidStudioProjects/MemeLib/app/src/main/res/layout/fragment_profile.xml" value="0.264" />
         <entry key="..\:/Users/dolun/AndroidStudioProjects/MemeLib/app/src/main/res/layout/item_collection.xml" value="0.2" />
         <entry key="..\:/Users/dolun/AndroidStudioProjects/MemeLib/app/src/main/res/layout/item_post.xml" value="0.4" />
+        <entry key="..\:/Users/dolun/AndroidStudioProjects/MemeLib/app/src/main/res/layout/remove_collection_dialog.xml" value="0.2210144927536232" />
         <entry key="..\:/Users/dolun/AndroidStudioProjects/MemeLib/app/src/main/res/menu/menu_bottom_navigation.xml" value="0.4" />
         <entry key="app/src/main/res/layout/item_post.xml" value="0.24547101449275363" />
       </map>

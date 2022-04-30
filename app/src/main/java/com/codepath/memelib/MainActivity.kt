@@ -69,6 +69,7 @@ class MainActivity(override var mp: MediaPlayer? = null) : AppCompatActivity(), 
 
         // Set default selection
         findViewById<BottomNavigationView>(R.id.bottom_navigation).selectedItemId = R.id.action_home
+
     }
 
     companion object {

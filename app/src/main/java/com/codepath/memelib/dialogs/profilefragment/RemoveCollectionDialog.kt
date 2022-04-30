@@ -1,48 +1,30 @@
-package com.codepath.memelib.dialogs.profilefragment
+package com.codepath.memelib.dialogs.feedfragment
 
-import android.app.AlertDialog
-import android.app.Dialog
-import android.content.Context
 import android.content.DialogInterface
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
-import androidx.appcompat.app.AppCompatDialogFragment
+import android.view.ViewGroup
+import androidx.fragment.app.DialogFragment
+import com.codepath.memelib.Collections
 import com.codepath.memelib.R
 
-class RemoveCollectionDialog : AppCompatDialogFragment() {
 
-    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        val builder = AlertDialog.Builder(activity)
-        val inflater = requireActivity().layoutInflater
-        val view: View = inflater.inflate(R.layout.remove_collection_dialog, null)
-        builder.setView(view)
-            .setNegativeButton(
-                "No"
-            ) { dialogInterface: DialogInterface?, i: Int -> }
-            .setPositiveButton(
-                "Yes"
-            ) { dialogInterface: DialogInterface?, i: Int -> listener.removeCollection() }
-        return builder.create()
+class RemoveCollectionDialog : DialogFragment()  {
+
+    var allCollections: MutableList<Collections> = mutableListOf()
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        return inflater.inflate(R.layout.add_to_collection_dialog, container)
     }
 
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        try {
-//            listener = (RemoveCollectionDialogListener) context
-        } catch (e: ClassCastException) {
-            throw ClassCastException(
-                context.toString() +
-                        "must implement deleteContactDialogListener"
-            )
-        }
-    }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-    interface RemoveCollectionDialogListener {
-        fun removeCollection()
-    }
 
-    companion object {
-        lateinit var listener: RemoveCollectionDialogListener
     }
-
 }

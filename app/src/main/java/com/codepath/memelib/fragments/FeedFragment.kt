@@ -1,21 +1,27 @@
 package com.codepath.memelib.fragments
 
 import android.content.Intent
+import android.graphics.drawable.BitmapDrawable
 import android.media.MediaPlayer
+import android.net.Uri
 import android.os.Bundle
+import android.provider.MediaStore
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.Toast
+import android.widget.ImageView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.codepath.memelib.*
-import com.parse.ParseException
+import com.codepath.memelib.dialogs.feedfragment.CreateCollectionDialog
+import com.codepath.memelib.dialogs.feedfragment.EditCollectionDialog
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.parse.ParseQuery
 import com.parse.ParseUser
 
@@ -86,6 +92,7 @@ open class FeedFragment(override var mp: MediaPlayer? = null) : Fragment(), Soun
             ParseUser.logOut()
             goToLoginActivity()
         }
+
     }
 
     private fun goToLoginActivity() {
@@ -124,10 +131,7 @@ open class FeedFragment(override var mp: MediaPlayer? = null) : Fragment(), Soun
         }
     }
 
-
     companion object {
         const val TAG = "FeedFragment"
-
-
     }
 }

@@ -9,11 +9,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.codepath.memelib.*
+import com.codepath.memelib.dialogs.feedfragment.CreateCollectionDialog
+import com.codepath.memelib.dialogs.feedfragment.EditCollectionDialog
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.parse.ParseQuery
 import com.parse.ParseUser
 
@@ -24,6 +28,7 @@ open class ProfileFragment(override var mp: MediaPlayer? = null) : Fragment(), S
     lateinit var adapter: CollectionAdapter
     lateinit var swipeContainer: SwipeRefreshLayout
     lateinit var collectionsRecyclerView: RecyclerView
+    lateinit var addCollectionBtn : FloatingActionButton
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -43,6 +48,14 @@ open class ProfileFragment(override var mp: MediaPlayer? = null) : Fragment(), S
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        addCollectionBtn = view.findViewById(R.id.AddCollectionBtn)
+
+        addCollectionBtn.setOnClickListener {
+            val CreateCollectionDialog = CreateCollectionDialog()
+            val fragmentManager = (view.getContext() as FragmentActivity).supportFragmentManager
+            CreateCollectionDialog.show(fragmentManager, "CreateCollectionDialog")
+        }
 
         swipeContainer = view.findViewById(R.id.swipeContainer)
 
