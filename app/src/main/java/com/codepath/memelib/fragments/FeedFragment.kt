@@ -13,11 +13,15 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.codepath.memelib.*
+import com.codepath.memelib.dialogs.feedfragment.CreateCollectionDialog
+import com.codepath.memelib.dialogs.feedfragment.EditCollectionDialog
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.parse.ParseQuery
 import com.parse.ParseUser
 
@@ -88,6 +92,7 @@ open class FeedFragment(override var mp: MediaPlayer? = null) : Fragment(), Soun
             ParseUser.logOut()
             goToLoginActivity()
         }
+
     }
 
     private fun goToLoginActivity() {

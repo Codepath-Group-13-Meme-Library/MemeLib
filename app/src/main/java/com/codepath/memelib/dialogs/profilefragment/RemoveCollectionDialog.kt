@@ -26,8 +26,5 @@ class RemoveCollectionDialog : DialogFragment()  {
         super.onViewCreated(view, savedInstanceState)
 
 
-        // Show soft keyboard automatically and request focus to field
-        // Show soft keyboard automatically and request focus to field
-
     }
 }
