@@ -83,9 +83,15 @@ class LoginActivity(override var mp: MediaPlayer? = null) : AppCompatActivity(),
 
         //every user must have favorites collection
 
+        val myPostsCollection = Collections()
+        myPostsCollection.setName("My posts")
+        myPostsCollection.setUser(user)
+
         val favoritesCollection = Collections()
         favoritesCollection.setName("favorites")
         favoritesCollection.setUser(user)
+
+        colArray.put(myPostsCollection)
         colArray.put(favoritesCollection)
         user.put("collections", colArray)  // Set custom properties
 
