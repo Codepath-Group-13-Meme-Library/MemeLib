@@ -242,22 +242,24 @@ Click [here](https://kbz9pk.axshare.com) to play with the interactive prototype 
        #### User Stories
        
        The following **required** functionality is completed:
+       - [X] Create collections
+       - [X] View collections in profile fragment
        - [ ] Put images in collections/favorites (pointer)
        - [ ] Put tags for images 
 
        The following **optional** features are implemented:
        - [ ] Post GIF (File)
-       - [ ] Must be a user to post an image
-       - [ ] Timestamp when the post was posted
-       - [ ] Delete post
-       - [ ] Edit post
+       - [X] Must be a user to post an image
+       - [X] Timestamp when the post was posted
+       - [X] Delete post
+       - [X] Edit post
        - [ ] Better UI
-       - [ ] Background themes/customize app color
-       - [ ] Sounds when clicked etc.
+       - [X] Background themes/customize app color
+       - [X] Sounds when clicked etc.
        - [X] App Icon
        - [ ] Private/public collections
        - [ ] Reactions to posts (thumbs up, heart, etc.)
-       - [ ] Share memes on another app like (whatsapp, instagram, snapchat, discord, etc.)
+       - [X] Share memes on another app like (whatsapp, instagram, snapchat, discord, etc.)
 
 
        #### Video Walkthrough
