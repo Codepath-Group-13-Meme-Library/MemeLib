@@ -114,7 +114,7 @@
         android:layout_width="40dp"
         android:layout_height="40dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/ivFavorite"
+        app:layout_constraintEnd_toStartOf="@+id/ivAddToCollection"
         app:layout_constraintTop_toBottomOf="@+id/ivImage"
         app:srcCompat="@drawable/ic_baseline_edit_24" />
 
@@ -127,5 +127,14 @@
         app:layout_constraintEnd_toStartOf="@+id/ivEdit"
         app:layout_constraintTop_toBottomOf="@+id/ivImage"
         app:srcCompat="@drawable/ic_baseline_delete_24" />
+
+    <ImageView
+        android:id="@+id/ivAddToCollection"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="2dp"
+        app:srcCompat="@drawable/ic_baseline_playlist_add_24"
+        app:layout_constraintEnd_toStartOf="@+id/ivFavorite"
+        app:layout_constraintTop_toBottomOf="@+id/ivImage" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

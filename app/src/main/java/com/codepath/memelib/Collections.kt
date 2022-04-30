@@ -7,6 +7,7 @@ import com.parse.ParseUser
 import org.json.JSONArray
 
 @ParseClassName("Collections")
+
 class Collections : ParseObject() {
 
     fun getDescription() : String? {
@@ -21,7 +22,7 @@ class Collections : ParseObject() {
         return getString(KEY_NAME)
     }
 
-    fun setName(name : String) {
+    fun setName(name: String) {
         put(KEY_NAME, name)
     }
 
