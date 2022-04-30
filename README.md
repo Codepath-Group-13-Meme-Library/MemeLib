@@ -244,6 +244,9 @@ Click [here](https://kbz9pk.axshare.com) to play with the interactive prototype 
        The following **required** functionality is completed:
        - [X] Create collections
        - [X] View collections in profile fragment
+       - [X] Browsing page (without logging in)
+       - [X] Implemented collection page including posts
+       - [X] Profile fragment implemented
        - [ ] Put images in collections/favorites (pointer)
        - [ ] Put tags for images 
 
